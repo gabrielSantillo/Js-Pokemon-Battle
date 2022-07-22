@@ -1,0 +1,70 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Garamond", "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  place-items: center;
+  width: 100%;
+}
+
+img, svg, iframe {
+  width: 100%;
+}
+
+#pokemon-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  margin: 50px;
+  row-gap: 150px;
+  -moz-column-gap: 50px;
+       column-gap: 50px;
+}
+#pokemon-section > article {
+  display: grid;
+  place-items: center;
+  row-gap: 25px;
+}
+#pokemon-section > article > #fire {
+  background-color: rgb(255, 94, 0);
+  width: 70px;
+  text-align: center;
+  color: white;
+  justify-self: center;
+  border-radius: 5px;
+}
+#pokemon-section > article > #grass {
+  background-color: rgb(23, 170, 60);
+  width: 70px;
+  text-align: center;
+  color: white;
+  justify-self: center;
+  border-radius: 5px;
+}
+#pokemon-section > article > #water {
+  background-color: rgb(35, 118, 192);
+  width: 70px;
+  text-align: center;
+  color: white;
+  justify-self: center;
+  border-radius: 5px;
+}
+#pokemon-section > article > img {
+  width: 50%;
+}
+#pokemon-section > article > button {
+  border: none;
+  color: white;
+  margin-top: 20px;
+  background-image: linear-gradient(45deg, rgb(255, 94, 0), rgb(23, 170, 60), rgb(35, 118, 192));
+  font-size: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 30%;
+  height: 100%;
+}
+#pokemon-section > article > button:hover {
+  background-image: linear-gradient(225deg, rgb(255, 94, 0), rgb(23, 170, 60), rgb(35, 118, 192));
+}/*# sourceMappingURL=style.css.map */
