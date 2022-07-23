@@ -34,7 +34,7 @@ function addCharizard(details) {
     Cookies.set(`user_current_health`, user_current_health);
 
     let computer_current_health = venusaur[`health`];
-    Cookies.set(`computer_current_health`) = computer_current_health;
+    Cookies.set(`computer_current_health`, computer_current_health);
 }
 
 /* getting the charizard button */
@@ -58,6 +58,12 @@ function addVenusaur(details) {
 
      let computer_pokemon_selection_json = JSON.stringify(blastoise);
      Cookies.set(`computer_selection`, computer_pokemon_selection_json);
+
+     let user_current_health = venusaur[`health`];
+    Cookies.set(`user_current_health`, user_current_health);
+
+    let computer_current_health = blastoise[`health`];
+    Cookies.set(`computer_current_health`, computer_current_health);
 }
 
 /* getting the venusaur button */
@@ -81,6 +87,12 @@ function addBlastoise(details) {
 
   let computer_pokemon_selection_json = JSON.stringify(charizard);
   Cookies.set(`computer_selection`, computer_pokemon_selection_json);
+
+  let user_current_health = blastoise[`health`];
+    Cookies.set(`user_current_health`, user_current_health);
+
+    let computer_current_health = charizard[`health`];
+    Cookies.set(`computer_current_health`, computer_current_health);
 }
 
 /* getting the blastoise button */
