@@ -8,14 +8,23 @@ arrow_back[`style`][`cursor`] = `pointer`;
 
 /* starting the selection as an empty string*/
 let selection = ``;
+let computer_selection = ``;
 /* receiveing the cookie value as json */
 let selection_json = Cookies.get(`selection`);
+let computer_selection_json = Cookies.get(`computer_selection`);
 
 /* making sure that the selection is not undefined to set to an object */
 if(selection_json !== undefined) {
     selection = JSON.parse(selection_json);
+    computer_selection = JSON.parse(computer_selection_json);
     document.getElementById(`section-battle`).insertAdjacentHTML(`afterbegin`, 
     `<div>
+        <img src="${computer_selection[`img_url`]}">
+        <h2>${computer_selection[`name`]}</h2>
+        <h3>${computer_selection[`health`]}hp</h3>
+    </div>
+    
+    <div>
         <img class="img-battle" src="${selection[`img_url`]}">
         <h2 class="name-pokemon">${selection[`name`]}</h2>
         <div>

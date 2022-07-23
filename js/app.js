@@ -14,18 +14,21 @@ for(let counter = 0; counter < go_to_battle.length; counter ++){
 }
 
 /* This function creates the charizard object */
-function addCharizard(details) {
-    let charizard = {
+let charizard = {
         name: `Charizard`,
         attacks: [`Fire`, `Fly`, `Scratch`],
         health: 150,
         img_url: `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/006.png`
-    }
+    };
 
+function addCharizard(details) {
     /* making the object a JSON*/
     let pokemon_selection_json = JSON.stringify(charizard);
     /* setting the cookie with this JSON */
     Cookies.set(`selection`, pokemon_selection_json);
+
+    let computer_pokemon_selection_json = JSON.stringify(venusaur);
+    Cookies.set(`computer_selection`, computer_pokemon_selection_json);
 }
 
 /* getting the charizard button */
@@ -34,18 +37,21 @@ let add_charizard = document.getElementById(`button_charizard`);
 add_charizard.addEventListener(`click`, addCharizard);
 
 /* This function creates the venusaur object */
-function addVenusaur(details) {
-    let venusaur = {
+let venusaur = {
         name: `Venusaur`,
         attacks: [`Leaf`, `Grass`, `Scratch`],
         health: 150,
         img_url: `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/003.png`
-    }
+    };
 
+function addVenusaur(details) {
      /* making the object a JSON*/
      let pokemon_selection_json = JSON.stringify(venusaur);
      /* setting the cookie with this JSON */
      Cookies.set(`selection`, pokemon_selection_json);
+
+     let computer_pokemon_selection_json = JSON.stringify(blastoise);
+     Cookies.set(`computer_selection`, computer_pokemon_selection_json);
 }
 
 /* getting the venusaur button */
@@ -54,18 +60,21 @@ let add_venusaur = document.getElementById(`button_venusaur`);
 add_venusaur.addEventListener(`click`, addVenusaur);
 
 /* This function creates the blastoise object */
-function addBlastoise(details) {
-    let blastoise = {
-        name: `Blastoise`,
-        attacks: [`Water`, `Punch`, `Scratch`],
-        health: 150,
-        img_url: `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/009.png`
-    }
+let blastoise = {
+    name: `Blastoise`,
+    attacks: [`Water`, `Punch`, `Scratch`],
+    health: 150,
+    img_url: `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/009.png`
+}
 
-  /* making the object a JSON*/
+function addBlastoise(details) {
+    /* making the object a JSON*/
   let pokemon_selection_json = JSON.stringify(blastoise);
   /* setting the cookie with this JSON */
   Cookies.set(`selection`, pokemon_selection_json);
+
+  let computer_pokemon_selection_json = JSON.stringify(charizard);
+  Cookies.set(`computer_selection`, computer_pokemon_selection_json);
 }
 
 /* getting the blastoise button */
