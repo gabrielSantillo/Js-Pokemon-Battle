@@ -19,4 +19,8 @@ main {
 }
 main > h1 {
   text-align: center;
+}
+main > #arrow-left {
+  margin-left: 20px;
+  width: 30px;
 }/*# sourceMappingURL=selection.css.map */

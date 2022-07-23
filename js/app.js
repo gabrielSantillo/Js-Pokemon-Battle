@@ -1,3 +1,4 @@
+/* this function goes to the battle page if the user has chosen at least one pokemon */
 function goToBattle(details) {
     if(Cookies.get(`selection`) !== undefined){
         window.location.href = `selection.html`;
@@ -5,8 +6,9 @@ function goToBattle(details) {
         alert(`You should pick a Pokemon first.`);
     }
 }
-
+/* gettinh all a tags from the page */
 let go_to_battle = document.getElementsByClassName(`go-to-battle`);
+/* getting one a tag by one to on click call the function goToBattle */
 for(let counter = 0; counter < go_to_battle.length; counter ++){
     go_to_battle[counter].addEventListener(`click`, goToBattle);
 }

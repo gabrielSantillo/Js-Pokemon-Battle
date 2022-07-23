@@ -1,3 +1,10 @@
+function goBack(details) {
+    window.location.href = `index.html`
+}
+
+let arrow_back = document.getElementById(`arrow-left`);
+arrow_back.addEventListener(`click`, goBack);
+arrow_back[`style`][`cursor`] = `pointer`;
 
 /* starting the selection array as an empty array*/
 let selection_array = [];
