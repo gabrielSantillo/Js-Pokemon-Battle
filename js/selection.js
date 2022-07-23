@@ -42,7 +42,6 @@ if(selection_json !== undefined) {
 }
 
 function damageFirst(details) {
-    
     computer_current_health = computer_current_health - 50;
 
     if(computer_current_health <= 0) {
@@ -53,16 +52,23 @@ function damageFirst(details) {
     computer_health[`innerHTML`] = `${computer_current_health}hp`;
     Cookies.set(`computer_current_health`, `${computer_current_health}`);
 
-    if(computer_current_health <= 0) {
+    if(computer_current_health === 0) {
         let computer_health = document.getElementById(`div-buttons-attack`);
     computer_health[`outerHTML`] = `<h3>You win!</h3>`;
-    } else if(user_current_health <= 0) {
-        alert(`you lost`);
-    } else {
-        user_current_health = user_current_health - 40;        
+    } 
+    else if(user_current_health > 0) {
+        user_current_health = user_current_health - 40;
+        if(user_current_health <= 0){
+            user_current_health = 0;
+            let user_health = document.getElementById(`div-buttons-attack`);
+            user_health[`outerHTML`] = `<h3>You lost!</h3>`
+        }        
         let user_health = document.getElementById(`user-health`);
         user_health[`innerHTML`] = `${user_current_health}hp`;
         Cookies.set(`user_current_health`, `${user_current_health}`);
+    } 
+    else {
+        
     }
 }
 
@@ -80,15 +86,23 @@ function damageSecond(details) {
     computer_health[`innerHTML`] = `${computer_current_health}hp`;
     Cookies.set(`computer_current_health`, `${computer_current_health}`);
 
-    if(computer_current_health <= 0) {
+    if(computer_current_health === 0) {
         let computer_health = document.getElementById(`div-buttons-attack`);
     computer_health[`outerHTML`] = `<h3>You win!</h3>`;
-    } else {
-        
+    } 
+    else if(user_current_health > 0) {
         user_current_health = user_current_health - 40;
+        if(user_current_health <= 0){
+            user_current_health = 0;
+            let user_health = document.getElementById(`div-buttons-attack`);
+            user_health[`outerHTML`] = `<h3>You lost!</h3>`
+        }        
         let user_health = document.getElementById(`user-health`);
         user_health[`innerHTML`] = `${user_current_health}hp`;
         Cookies.set(`user_current_health`, `${user_current_health}`);
+    } 
+    else {
+        
     }
 }
 
@@ -107,16 +121,23 @@ function damageThird(details) {
     computer_health[`innerHTML`] = `${computer_current_health}hp`;
     Cookies.set(`computer_current_health`, `${computer_current_health}`);
 
-    if(computer_current_health <= 0) {
+    if(computer_current_health === 0) {
         let computer_health = document.getElementById(`div-buttons-attack`);
     computer_health[`outerHTML`] = `<h3>You win!</h3>`;
-    } else if(user_current_health <= 0) {
-        alert(`you lost`);
-    } else {
-        user_current_health = user_current_health - 40;        
+    } 
+    else if(user_current_health > 0) {
+        user_current_health = user_current_health - 40;
+        if(user_current_health <= 0){
+            user_current_health = 0;
+            let user_health = document.getElementById(`div-buttons-attack`);
+            user_health[`outerHTML`] = `<h3>You lost!</h3>`
+        }        
         let user_health = document.getElementById(`user-health`);
         user_health[`innerHTML`] = `${user_current_health}hp`;
         Cookies.set(`user_current_health`, `${user_current_health}`);
+    } 
+    else {
+        
     }
 }
 
