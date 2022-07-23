@@ -29,6 +29,12 @@ function addCharizard(details) {
 
     let computer_pokemon_selection_json = JSON.stringify(venusaur);
     Cookies.set(`computer_selection`, computer_pokemon_selection_json);
+
+    let user_current_health = charizard[`health`];
+    Cookies.set(`user_current_health`, user_current_health);
+
+    let computer_current_health = venusaur[`health`];
+    Cookies.set(`computer_current_health`) = computer_current_health;
 }
 
 /* getting the charizard button */
