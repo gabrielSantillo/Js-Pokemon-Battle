@@ -20,10 +20,10 @@ let selection_json = Cookies.get(`selection`);
 /* receiveing the computer selection cookie value as json */
 let computer_selection_json = Cookies.get(`computer_selection`);
 
-/* receiveing the user current health as string */
+/* receiveing the user current health as string and turning into number*/
 let user_current_health = parseInt(Cookies.get(`user_current_health`));
 
-/* receiveing the computer current health as string */
+/* receiveing the computer current health as string and turning into number*/
 let computer_current_health = parseInt(Cookies.get(`computer_current_health`));
 
 /* making sure that the selection is not undefined to set to an object */
