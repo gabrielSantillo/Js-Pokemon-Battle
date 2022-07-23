@@ -1,3 +1,17 @@
+function goToBattle(details) {
+    if(Cookies.get(`selection`) !== undefined){
+        window.location.href = `selection.html`;
+    } else {
+        alert(`You should pick a Pokemon first.`);
+    }
+}
+
+let go_to_battle = document.getElementsByClassName(`go-to-battle`);
+for(let counter = 0; counter < go_to_battle.length; counter ++){
+    go_to_battle[counter].addEventListener(`click`, goToBattle);
+}
+
+
 /* starting the selection pokemon as an empty array */
 let pokemon_selection = [];
 
