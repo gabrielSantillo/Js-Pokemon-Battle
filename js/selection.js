@@ -42,7 +42,12 @@ if(selection_json !== undefined) {
 }
 
 function damageFirst(details) {
+    
     computer_current_health = computer_current_health - 50;
+
+    if(computer_current_health <= 0) {
+        computer_current_health = 0;
+    }
 
     let computer_health = document.getElementById(`computer-health`);
     computer_health[`innerHTML`] = `${computer_current_health}hp`;
@@ -51,9 +56,10 @@ function damageFirst(details) {
     if(computer_current_health <= 0) {
         let computer_health = document.getElementById(`div-buttons-attack`);
     computer_health[`outerHTML`] = `<h3>You win!</h3>`;
+    } else if(user_current_health <= 0) {
+        alert(`you lost`);
     } else {
-        
-        user_current_health = user_current_health - 40;
+        user_current_health = user_current_health - 40;        
         let user_health = document.getElementById(`user-health`);
         user_health[`innerHTML`] = `${user_current_health}hp`;
         Cookies.set(`user_current_health`, `${user_current_health}`);
@@ -65,6 +71,10 @@ button_attack_one.addEventListener(`click`, damageFirst);
 
 function damageSecond(details) {
     computer_current_health = computer_current_health - 40;
+
+    if(computer_current_health <= 0) {
+        computer_current_health = 0;
+    }
 
     let computer_health = document.getElementById(`computer-health`);
     computer_health[`innerHTML`] = `${computer_current_health}hp`;
@@ -89,6 +99,10 @@ damageSecond);
 function damageThird(details) {
     computer_current_health = computer_current_health - 30;
 
+    if(computer_current_health <= 0) {
+        computer_current_health = 0;
+    }
+
     let computer_health = document.getElementById(`computer-health`);
     computer_health[`innerHTML`] = `${computer_current_health}hp`;
     Cookies.set(`computer_current_health`, `${computer_current_health}`);
@@ -96,14 +110,16 @@ function damageThird(details) {
     if(computer_current_health <= 0) {
         let computer_health = document.getElementById(`div-buttons-attack`);
     computer_health[`outerHTML`] = `<h3>You win!</h3>`;
+    } else if(user_current_health <= 0) {
+        alert(`you lost`);
     } else {
-        
-        user_current_health = user_current_health - 40;
+        user_current_health = user_current_health - 40;        
         let user_health = document.getElementById(`user-health`);
         user_health[`innerHTML`] = `${user_current_health}hp`;
         Cookies.set(`user_current_health`, `${user_current_health}`);
     }
 }
+
 
 let button_attack_third = document.getElementById(`attack-three`);
 button_attack_third.addEventListener(`click`, damageThird);
