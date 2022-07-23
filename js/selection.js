@@ -44,7 +44,8 @@ function damageFirst(details) {
     computer_current_health = computer_current_health - 50;
 
     let computer_health = document.getElementById(`computer-health`);
-    computer_health[`outerHTML`] = `<h3>${computer_current_health}hp</h3>`;
+    computer_health[`innerHTML`] = `${computer_current_health}hp`;
+    Cookies.set(`computer_current_health`, `${computer_current_health}`);
 
     if(computer_current_health <= 0) {
         let computer_health = document.getElementById(`div-buttons-attack`);
@@ -53,10 +54,12 @@ function damageFirst(details) {
         
         user_current_health = user_current_health - 40;
         let user_health = document.getElementById(`user-health`);
-        user_health[`outerHTML`] = `<h3>${user_current_health}</h3>`;
+        user_health[`innerHTML`] = `${user_current_health}hp`;
+        Cookies.set(`user_current_health`, `${user_current_health}`);
     }
-
 }
+
+
 
 let button_attack_one = document.getElementById(`attack_one`);
 button_attack_one.addEventListener(`click`, damageFirst);
