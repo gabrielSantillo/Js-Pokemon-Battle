@@ -29,6 +29,39 @@ main > #arrow-left {
   display: grid;
   place-items: center;
 }
+#section-battle > div {
+  display: grid;
+  place-items: center;
+  row-gap: 10px;
+}
+#section-battle > div > div {
+  display: grid;
+  place-items: center;
+  grid-template-columns: 1fr 1fr 1fr;
+  row-gap: 10px;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+}
+#section-battle > div > div > button {
+  border: none;
+  color: white;
+  margin-top: 20px;
+  background-color: #8e44ad;
+  font-size: 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 120%;
+  height: 80%;
+}
+#section-battle > div > div > button:hover {
+  background-color: #a927e0;
+}
+#section-battle > div > div > button:active {
+  transform: scale(0.9);
+}
+#section-battle > div > h3 {
+  margin-top: 20px;
+}
 #section-battle > img {
   width: 300px;
 }/*# sourceMappingURL=selection.css.map */

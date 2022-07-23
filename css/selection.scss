@@ -31,7 +31,49 @@ main{
   display: grid;
   place-items: center;
 
+  >div {
+    display: grid;
+    place-items: center;
+    row-gap: 10px;
+    
+
+    >div {
+      display: grid;
+      place-items: center;
+      grid-template-columns: 1fr 1fr 1fr;
+      row-gap: 10px;
+      column-gap: 20px;
+
+    >button {
+      border: none;
+      color: white;
+      margin-top: 20px;
+      background-color: #8e44ad;
+      font-size: 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      width: 120%;
+      height: 80%;
+      }
+
+      >button:hover {
+        background-color: #a927e0;
+    }
+
+    >button:active {
+        transform: scale(0.9);
+    }
+    }
+
+    >h3 {
+      margin-top: 20px;
+    }
+
+  }
+  
   >img {
     width: 300px;
   }
+
+ 
 }

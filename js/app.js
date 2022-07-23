@@ -42,12 +42,10 @@ function addVenusaur(details) {
         img_url: `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/003.png`
     }
 
-    /* adding the object in the array */
-    pokemon_selection.push(venusaur);
-    /* making the array a JSON*/
-    let pokemon_selection_json = JSON.stringify(pokemon_selection);
-    /* setting the cookie with this JSON */
-    Cookies.set(`selection`, pokemon_selection_json);
+     /* making the object a JSON*/
+     let pokemon_selection_json = JSON.stringify(venusaur);
+     /* setting the cookie with this JSON */
+     Cookies.set(`selection`, pokemon_selection_json);
 }
 
 /* getting the venusaur button */
@@ -63,12 +61,11 @@ function addBlastoise(details) {
         health: 150,
         img_url: `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/009.png`
     }
-    /* adding the object in the array */
-    pokemon_selection.push(blastoise);
-    /* making the array a JSON*/
-    let pokemon_selection_json = JSON.stringify(pokemon_selection);
-    /* setting the cookie with this JSON */
-    Cookies.set(`selection`, pokemon_selection_json);
+
+  /* making the object a JSON*/
+  let pokemon_selection_json = JSON.stringify(blastoise);
+  /* setting the cookie with this JSON */
+  Cookies.set(`selection`, pokemon_selection_json);
 }
 
 /* getting the blastoise button */
