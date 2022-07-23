@@ -23,4 +23,12 @@ main > h1 {
 main > #arrow-left {
   margin-left: 20px;
   width: 30px;
+}
+
+#section-battle {
+  display: grid;
+  place-items: center;
+}
+#section-battle > img {
+  width: 300px;
 }/*# sourceMappingURL=selection.css.map */

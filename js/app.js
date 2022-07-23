@@ -13,10 +13,6 @@ for(let counter = 0; counter < go_to_battle.length; counter ++){
     go_to_battle[counter].addEventListener(`click`, goToBattle);
 }
 
-
-/* starting the selection pokemon as an empty array */
-let pokemon_selection = [];
-
 /* This function creates the charizard object */
 function addCharizard(details) {
     let charizard = {
@@ -26,10 +22,8 @@ function addCharizard(details) {
         img_url: `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/006.png`
     }
 
-    /* adding the object in the array */
-    pokemon_selection.push(charizard);
-    /* making the array a JSON*/
-    let pokemon_selection_json = JSON.stringify(pokemon_selection);
+    /* making the object a JSON*/
+    let pokemon_selection_json = JSON.stringify(charizard);
     /* setting the cookie with this JSON */
     Cookies.set(`selection`, pokemon_selection_json);
 }

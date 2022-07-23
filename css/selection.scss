@@ -26,3 +26,12 @@ main{
     width: 30px;
   }
 }
+
+#section-battle {
+  display: grid;
+  place-items: center;
+
+  >img {
+    width: 300px;
+  }
+}
