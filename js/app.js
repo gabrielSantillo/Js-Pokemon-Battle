@@ -35,6 +35,8 @@ function addCharizard(details) {
 
     let computer_current_health = venusaur[`health`];
     Cookies.set(`computer_current_health`, computer_current_health);
+
+    alert(`You picked ${charizard[`name`]}. Click in the Battle button now.`)
 }
 
 /* getting the charizard button */
@@ -64,6 +66,8 @@ function addVenusaur(details) {
 
     let computer_current_health = blastoise[`health`];
     Cookies.set(`computer_current_health`, computer_current_health);
+
+    alert(`You picked ${venusaur[`name`]}. Click in the Battle button now.`)
 }
 
 /* getting the venusaur button */
@@ -93,6 +97,8 @@ function addBlastoise(details) {
 
     let computer_current_health = charizard[`health`];
     Cookies.set(`computer_current_health`, computer_current_health);
+
+    alert(`You picked ${blastoise[`name`]}. Click in the Battle button now.`)
 }
 
 /* getting the blastoise button */

@@ -27,21 +27,34 @@ if(selection_json !== undefined) {
     <div>
         <img class="img-battle" src="${selection[`img_url`]}">
         <h2 class="name-pokemon">${selection[`name`]}</h2>
-        <div>
+        <div id="div-buttons-attack">
         <button class="button-attacks" id="attack_one">${selection[`attacks`][0]}</button>
         <button class="button-attacks">${selection[`attacks`][1]}</button>
         <button class="button-attacks">${selection[`attacks`][2]}</button>
         </div>
-        <h3>${selection[`health`]}hp</h3>
+        <h3 id="user-health">${selection[`health`]}hp</h3>
     </div>`)
 }
 
+let computer_current_health = parseInt(Cookies.get(`computer_current_health`));
+
+let user_current_health = parseInt(Cookies.get(`user_current_health`));
+
 function damageFirst(details) {
-    let computer_current_health = parseInt(Cookies.get(`computer_current_health`));
     computer_current_health = computer_current_health - 50;
 
     let computer_health = document.getElementById(`computer-health`);
     computer_health[`outerHTML`] = `<h3>${computer_current_health}hp</h3>`;
+
+    if(computer_current_health <= 0) {
+        let computer_health = document.getElementById(`div-buttons-attack`);
+    computer_health[`outerHTML`] = `<h3>You win!</h3>`;
+    } else {
+        
+        user_current_health = user_current_health - 40;
+        let user_health = document.getElementById(`user-health`);
+        user_health[`outerHTML`] = `<h3>${user_current_health}</h3>`;
+    }
 
 }
 
