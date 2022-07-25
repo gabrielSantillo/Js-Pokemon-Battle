@@ -38,7 +38,7 @@ main > #arrow-left {
 #section-battle > div > div {
   display: grid;
   place-items: center;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   row-gap: 10px;
   -moz-column-gap: 20px;
        column-gap: 20px;
@@ -59,6 +59,9 @@ main > #arrow-left {
 }
 #section-battle > div > div > button:active {
   transform: scale(0.9);
+}
+#section-battle > div > div > p {
+  justify-self: start;
 }
 #section-battle > div > h3 {
   margin-top: 20px;

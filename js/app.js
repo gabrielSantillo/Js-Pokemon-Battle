@@ -18,7 +18,7 @@ for (let counter = 0; counter < go_to_battle.length; counter++) {
 /* this is the variable that creates the object Charizard */
 let charizard = {
   name: `Charizard`,
-  attacks: [`Fire`, `Fly`, `Scratch`],
+  attacks: [`Fire`, `Fly`, `Scratch`, `Recovery`],
   health: 150,
   img_url: `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/006.png`,
 };
@@ -57,7 +57,7 @@ add_charizard.addEventListener(`click`, addCharizard);
 /* this is the variable that creates the object Venusaur */
 let venusaur = {
   name: `Venusaur`,
-  attacks: [`Leaf`, `Grass`, `Scratch`],
+  attacks: [`Leaf`, `Grass`, `Scratch`, `Recovery`],
   health: 150,
   img_url: `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/003.png`,
 };
@@ -96,7 +96,7 @@ add_venusaur.addEventListener(`click`, addVenusaur);
 /* this is the variable that creates the object Blastoise */
 let blastoise = {
   name: `Blastoise`,
-  attacks: [`Water`, `Punch`, `Scratch`],
+  attacks: [`Water`, `Punch`, `Scratch`, `Recovery`],
   health: 150,
   img_url: `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/009.png`,
 };

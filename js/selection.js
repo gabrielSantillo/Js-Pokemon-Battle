@@ -26,6 +26,15 @@ let user_current_health = parseInt(Cookies.get(`user_current_health`));
 /* receiveing the computer current health as string and turning into number*/
 let computer_current_health = parseInt(Cookies.get(`computer_current_health`));
 
+let first_attack_stock = 3;
+Cookies.set(`first_attack_stock`, first_attack_stock);
+let second_attack_stock = 4;
+Cookies.set(`second_attack_stock`, second_attack_stock);
+let third_attack_stock = 5;
+Cookies.set(`third_attack_stock`, third_attack_stock);
+let fourth_attack_stock = 4;
+Cookies.set(`fourth_attack_stock`, fourth_attack_stock);
+
 /* making sure that the selection is not undefined to set to an object */
 if (selection_json !== undefined) {
   /* making the selection JSON back to an object again */
@@ -50,13 +59,19 @@ if (selection_json !== undefined) {
         <button class="button-attacks" id="attack_one">${
           selection[`attacks`][0]
         }</button>
+        <p id="first-stock">${first_attack_stock}/3</p>
         <button class="button-attacks" id="attack-two">${
           selection[`attacks`][1]
         }</button>
+        <p id="second-stock">${second_attack_stock}/4</p>
         <button class="button-attacks" id="attack-three">${
           selection[`attacks`][2]
         }</button>
-        <button class="button-attacks" id="attack-recovery">Recovery</button>
+        <p id="third-stock">${third_attack_stock}/5</p>
+        <button class="button-attacks" id="attack-recovery">${
+          selection[`attacks`][3]
+        }</button>
+        <p id="fourth-stock">${fourth_attack_stock}/4</p>
         </div>
         <h3 id="user-health">${user_current_health}hp</h3>
     </div>`
@@ -65,48 +80,68 @@ if (selection_json !== undefined) {
 
 /* this function its for the first button that can damage the computer pokemon */
 function damageFirst(details) {
-  /* the computer current health get decreased in a random number that can go from zero to 70 */
-  computer_current_health =
-    computer_current_health - Math.floor(Math.random() * 70);
+  /* getting the id of the p tag that contains the number of attacks that the user can attack */
+  let first_stock = document.getElementById(`first-stock`);
 
-  /* check if the computer current health is less or equal to zero and if yes, set its value to zero */
-  if (computer_current_health <= 0) {
-    computer_current_health = 0;
-  }
+  /* it verify if the number of stock of attack is higher than 0 */
+  if (first_attack_stock > 0) {
+    /* the computer current health get decreased in a random number that can go from zero to 70 */
+    computer_current_health =
+      computer_current_health - Math.floor(Math.random() * 70);
+    /* the stock of attack gets decreased by one*/
+    first_attack_stock = first_attack_stock - 1;
+    /* it verify if the stock of attack is zero to change the color of the tag to red. Which indicates that this attack is out of stock */
+    if (first_attack_stock === 0) {
+      first_stock[`style`][`color`] = `red`;
+    }
+    /* it change the content of the number of attacks */
+    first_stock[`innerHTML`] = `${first_attack_stock}/3`;
+    /* set the cookie to the new stock of attacks */
+    Cookies.set(`first_attack_stock`, first_attack_stock);
 
-  /* gets the computer health tag  */
-  let computer_health = document.getElementById(`computer-health`);
-  /* update the new value after being attacked */
-  computer_health[`innerHTML`] = `${computer_current_health}hp`;
-  /* set the cookie to this new value, so when the pages refreshs, the hp its still the same */
-  Cookies.set(`computer_current_health`, `${computer_current_health}`);
-
-  /* check if the computer health after being attacked its equal to zero */
-  if (computer_current_health === 0) {
-    /* its print on the screen that you are the winner */
-    let computer_health = document.getElementById(`div-buttons-attack`);
-    computer_health[`outerHTML`] = `<h3>You win!</h3>`;
-  } else if (user_current_health > 0) {
-    /* check if the user current health is higher tham zero */
-    /* the user pokemon is attacked with a random number from zero to 50 */
-    user_current_health = user_current_health - Math.floor(Math.random() * 50);
-
-    /* check if the user current health is less or equal to zero */
-    if (user_current_health <= 0) {
-      /* set the user current health to zero */
-      user_current_health = 0;
-      /* print on the page that you lost */
-      let user_health = document.getElementById(`div-buttons-attack`);
-      user_health[`outerHTML`] = `<h3>You lost!</h3>`;
+    /* check if the computer current health is less or equal to zero and if yes, set its value to zero */
+    if (computer_current_health <= 0) {
+      computer_current_health = 0;
     }
 
-    /* gets the tag with the user health number */
-    let user_health = document.getElementById(`user-health`);
-    /* add the new value after being attacked */
-    user_health[`innerHTML`] = `${user_current_health}hp`;
-    /* uptading the cookie with the new user current health */
-    Cookies.set(`user_current_health`, `${user_current_health}`);
+    /* gets the computer health tag  */
+    let computer_health = document.getElementById(`computer-health`);
+    /* update the new value after being attacked */
+    computer_health[`innerHTML`] = `${computer_current_health}hp`;
+    /* set the cookie to this new value, so when the pages refreshs, the hp its still the same */
+    Cookies.set(`computer_current_health`, `${computer_current_health}`);
+
+    /* check if the computer health after being attacked its equal to zero */
+    if (computer_current_health === 0) {
+      /* its print on the screen that you are the winner */
+      let computer_health = document.getElementById(`div-buttons-attack`);
+      computer_health[`outerHTML`] = `<h3>You win!</h3>`;
+    } else if (user_current_health > 0) {
+      /* check if the user current health is higher tham zero */
+      /* the user pokemon is attacked with a random number from zero to 50 */
+      user_current_health =
+        user_current_health - Math.floor(Math.random() * 50);
+
+      /* check if the user current health is less or equal to zero */
+      if (user_current_health <= 0) {
+        /* set the user current health to zero */
+        user_current_health = 0;
+        /* print on the page that you lost */
+        let user_health = document.getElementById(`div-buttons-attack`);
+        user_health[`outerHTML`] = `<h3>You lost!</h3>`;
+      }
+
+      /* gets the tag with the user health number */
+      let user_health = document.getElementById(`user-health`);
+      /* add the new value after being attacked */
+      user_health[`innerHTML`] = `${user_current_health}hp`;
+      /* uptading the cookie with the new user current health */
+      Cookies.set(`user_current_health`, `${user_current_health}`);
+    } else {
+    }
   } else {
+    /* when the stock of attack is zero and the user try to use this attack again, an alert in print on the screen */
+    alert(`The chosen option is zero. Chose other attack.`);
   }
 }
 
@@ -117,48 +152,68 @@ button_attack_one.addEventListener(`click`, damageFirst);
 
 /* this function its for the second button that can damage the computer pokemon */
 function damageSecond(details) {
-  /* the computer current health get decreased in a random number that can go from zero to 60 */
-  computer_current_health =
-    computer_current_health - Math.floor(Math.random() * 60);
+  /* getting the id of the p tag that contains the number of attacks that the user can attack */
+  let second_stock = document.getElementById(`second-stock`);
 
-  /* check if the computer current health is less or equal to zero and if yes, set its value to zero */
-  if (computer_current_health <= 0) {
-    computer_current_health = 0;
-  }
+  /* it verify if the number of stock of attack is higher than 0 */
+  if (second_attack_stock > 0) {
+    /* the computer current health get decreased in a random number that can go from zero to 60 */
+    computer_current_health =
+      computer_current_health - Math.floor(Math.random() * 60);
+    /* the stock of attack gets decreased by one*/
+    second_attack_stock = second_attack_stock - 1;
+    /* it verify if the stock of attack is zero to change the color of the tag to red. Which indicates that this attack is out of stock */
+    if (second_attack_stock === 0) {
+      second_stock[`style`][`color`] = `red`;
+    }
+    /* it change the content of the number of attacks */
+    second_stock[`innerHTML`] = `${second_attack_stock}/4`;
+    /* set the cookie to the new stock of attacks */
+    Cookies.set(`second_attack_stock`, second_attack_stock);
 
-  /* gets the computer health tag  */
-  let computer_health = document.getElementById(`computer-health`);
-  /* update the new value after being attacked */
-  computer_health[`innerHTML`] = `${computer_current_health}hp`;
-  /* set the cookie to this new value, so when the pages refreshs, the hp its still the same */
-  Cookies.set(`computer_current_health`, `${computer_current_health}`);
-
-  /* check if the computer health after being attacked its equal to zero */
-  if (computer_current_health === 0) {
-    /* its print on the screen that you are the winner */
-    let computer_health = document.getElementById(`div-buttons-attack`);
-    computer_health[`outerHTML`] = `<h3>You win!</h3>`;
-  } else if (user_current_health > 0) {
-    /* check if the user current health is higher tham zero */
-    /* the user pokemon is attacked with a random number from zero to 50 */
-    user_current_health = user_current_health - Math.floor(Math.random() * 50);
-
-    /* check if the user current health is less or equal to zero */
-    if (user_current_health <= 0) {
-      /* set the user current health to zero */
-      user_current_health = 0;
-      /* print on the page that you lost */
-      let user_health = document.getElementById(`div-buttons-attack`);
-      user_health[`outerHTML`] = `<h3>You lost!</h3>`;
+    /* check if the computer current health is less or equal to zero and if yes, set its value to zero */
+    if (computer_current_health <= 0) {
+      computer_current_health = 0;
     }
 
-    /* gets the tag with the user health number */
-    let user_health = document.getElementById(`user-health`);
-    /* add the new value after being attacked */
-    user_health[`innerHTML`] = `${user_current_health}hp`;
-    /* uptading the cookie with the new user current health */
-    Cookies.set(`user_current_health`, `${user_current_health}`);
+    /* gets the computer health tag  */
+    let computer_health = document.getElementById(`computer-health`);
+    /* update the new value after being attacked */
+    computer_health[`innerHTML`] = `${computer_current_health}hp`;
+    /* set the cookie to this new value, so when the pages refreshs, the hp its still the same */
+    Cookies.set(`computer_current_health`, `${computer_current_health}`);
+
+    /* check if the computer health after being attacked its equal to zero */
+    if (computer_current_health === 0) {
+      /* its print on the screen that you are the winner */
+      let computer_health = document.getElementById(`div-buttons-attack`);
+      computer_health[`outerHTML`] = `<h3>You win!</h3>`;
+    } else if (user_current_health > 0) {
+      /* check if the user current health is higher tham zero */
+      /* the user pokemon is attacked with a random number from zero to 50 */
+      user_current_health =
+        user_current_health - Math.floor(Math.random() * 50);
+
+      /* check if the user current health is less or equal to zero */
+      if (user_current_health <= 0) {
+        /* set the user current health to zero */
+        user_current_health = 0;
+        /* print on the page that you lost */
+        let user_health = document.getElementById(`div-buttons-attack`);
+        user_health[`outerHTML`] = `<h3>You lost!</h3>`;
+      }
+
+      /* gets the tag with the user health number */
+      let user_health = document.getElementById(`user-health`);
+      /* add the new value after being attacked */
+      user_health[`innerHTML`] = `${user_current_health}hp`;
+      /* uptading the cookie with the new user current health */
+      Cookies.set(`user_current_health`, `${user_current_health}`);
+    } else {
+    }
   } else {
+    /* when the stock of attack is zero and the user try to use this attack again, an alert in print on the screen */
+    alert(`The chosen option is zero. Chose other attack.`);
   }
 }
 
@@ -169,47 +224,66 @@ button_attack_two.addEventListener(`click`, damageSecond);
 
 /* this function its for the third button that can damage the computer pokemon */
 function damageThird(details) {
-  /* the computer current health get decreased in a random number that can go from zero to 40 */
-  computer_current_health =
-    computer_current_health - Math.floor(Math.random() * 40);
+  let third_stock = document.getElementById(`third-stock`);
 
-  /* check if the computer current health is less or equal to zero and if yes, set its value to zero */
-  if (computer_current_health <= 0) {
-    computer_current_health = 0;
-  }
-
-  /* gets the computer health tag  */
-  let computer_health = document.getElementById(`computer-health`);
-  /* update the new value after being attacked */
-  computer_health[`innerHTML`] = `${computer_current_health}hp`;
-  /* set the cookie to this new value, so when the pages refreshs, the hp its still the same */
-  Cookies.set(`computer_current_health`, `${computer_current_health}`);
-
-  /* check if the computer health after being attacked its equal to zero */
-  if (computer_current_health === 0) {
-    /* its print on the screen that you are the winner */
-    let computer_health = document.getElementById(`div-buttons-attack`);
-    computer_health[`outerHTML`] = `<h3>You win!</h3>`;
-  } else if (user_current_health > 0) {
-    /* check if the user current health is higher tham zero */
-    /* the user pokemon is attacked with a random number from zero to 50 */
-    user_current_health = user_current_health - Math.floor(Math.random() * 50);
-
-    /* check if the user current health is less or equal to zero */
-    if (user_current_health <= 0) {
-      /* set the user current health to zero */
-      user_current_health = 0;
-      /* print on the page that you lost */
-      let user_health = document.getElementById(`div-buttons-attack`);
-      user_health[`outerHTML`] = `<h3>You lost!</h3>`;
+  /* it verify if the number of stock of attack is higher than 0 */
+  if (third_attack_stock > 0) {
+    /* the computer current health get decreased in a random number that can go from zero to 40 */
+    computer_current_health =
+      computer_current_health - Math.floor(Math.random() * 40);
+    /* the stock of attack gets decreased by one*/
+    third_attack_stock = third_attack_stock - 1;
+    /* it verify if the stock of attack is zero to change the color of the tag to red. Which indicates that this attack is out of stock */
+    if (third_attack_stock === 0) {
+      third_stock[`style`][`color`] = `red`;
     }
-    /* gets the tag with the user health number */
-    let user_health = document.getElementById(`user-health`);
-    /* add the new value after being attacked */
-    user_health[`innerHTML`] = `${user_current_health}hp`;
-    /* uptading the cookie with the new user current health */
-    Cookies.set(`user_current_health`, `${user_current_health}`);
+    /* it change the content of the number of attacks */
+    third_stock[`innerHTML`] = `${third_attack_stock}/5`;
+    /* set the cookie to the new stock of attacks */
+    Cookies.set(`third_attack_stock`, third_attack_stock);
+
+    /* check if the computer current health is less or equal to zero and if yes, set its value to zero */
+    if (computer_current_health <= 0) {
+      computer_current_health = 0;
+    }
+
+    /* gets the computer health tag  */
+    let computer_health = document.getElementById(`computer-health`);
+    /* update the new value after being attacked */
+    computer_health[`innerHTML`] = `${computer_current_health}hp`;
+    /* set the cookie to this new value, so when the pages refreshs, the hp its still the same */
+    Cookies.set(`computer_current_health`, `${computer_current_health}`);
+
+    /* check if the computer health after being attacked its equal to zero */
+    if (computer_current_health === 0) {
+      /* its print on the screen that you are the winner */
+      let computer_health = document.getElementById(`div-buttons-attack`);
+      computer_health[`outerHTML`] = `<h3>You win!</h3>`;
+    } else if (user_current_health > 0) {
+      /* check if the user current health is higher tham zero */
+      /* the user pokemon is attacked with a random number from zero to 50 */
+      user_current_health =
+        user_current_health - Math.floor(Math.random() * 50);
+
+      /* check if the user current health is less or equal to zero */
+      if (user_current_health <= 0) {
+        /* set the user current health to zero */
+        user_current_health = 0;
+        /* print on the page that you lost */
+        let user_health = document.getElementById(`div-buttons-attack`);
+        user_health[`outerHTML`] = `<h3>You lost!</h3>`;
+      }
+      /* gets the tag with the user health number */
+      let user_health = document.getElementById(`user-health`);
+      /* add the new value after being attacked */
+      user_health[`innerHTML`] = `${user_current_health}hp`;
+      /* uptading the cookie with the new user current health */
+      Cookies.set(`user_current_health`, `${user_current_health}`);
+    } else {
+    }
   } else {
+    /* when the stock of attack is zero and the user try to use this attack again, an alert in print on the screen */
+    alert(`The chosen option is zero. Chose other attack.`);
   }
 }
 
@@ -220,32 +294,50 @@ button_attack_third.addEventListener(`click`, damageThird);
 
 /* this function its for the fourth button that can recovery the user hp pokemon */
 function recovery(details) {
+  let fourth_stock = document.getElementById(`fourth-stock`);
+
+  if (fourth_attack_stock > 0) {
     /* the user current health get increased in a random number that can go from zero to 40 */
-    user_current_health =
-    user_current_health + 50;
-
-  /* check if the computer health after being attacked its equal to zero */
-  if (user_current_health > 0) {
-
-    /* the user pokemon is attacked with a random number from zero to 50 */
-    user_current_health = user_current_health - Math.floor(Math.random() * (80 - 30) + 30);
-
-    /* check if the user current health is less or equal to zero */
-    if (user_current_health <= 0) {
-      /* set the user current health to zero */
-      user_current_health = 0;
-      /* print on the page that you lost */
-      let user_health = document.getElementById(`div-buttons-attack`);
-      user_health[`outerHTML`] = `<h3>You lost!</h3>`;
+    user_current_health = user_current_health + 50;
+    /* the stock of attack gets decreased by one*/
+    fourth_attack_stock = fourth_attack_stock - 1;
+    /* it verify if the stock of attack is zero to change the color of the tag to red. Which indicates that this attack is out of stock */
+    if (fourth_attack_stock === 0) {
+      fourth_stock[`style`][`color`] = `red`;
     }
+    /* it change the content of the number of attacks */
+    fourth_stock[`innerHTML`] = `${fourth_attack_stock}/4`;
+    /* set the cookie to the new stock of attacks */
+    Cookies.set(`fourth_attack_stock`, fourth_attack_stock);
 
-    /* gets the tag with the user health number */
-    let user_health = document.getElementById(`user-health`);
-    /* add the new value after being attacked */
-    user_health[`innerHTML`] = `${user_current_health}hp`;
-    /* uptading the cookie with the new user current health */
-    Cookies.set(`user_current_health`, `${user_current_health}`);
-  } 
+    /* check if the computer health after being attacked its equal to zero */
+    if (user_current_health > 0) {
+      /* the user pokemon is attacked with a random number from zero to 50 */
+      user_current_health =
+        user_current_health - Math.floor(Math.random() * (80 - 30) + 30);
+
+      /* check if the user current health is less or equal to zero */
+      if (user_current_health <= 0) {
+        /* set the user current health to zero */
+        user_current_health = 0;
+        /* print on the page that you lost */
+        let user_health = document.getElementById(`div-buttons-attack`);
+        user_health[`outerHTML`] = `<h3>You lost!</h3>`;
+      }
+
+      /* gets the tag with the user health number */
+      let user_health = document.getElementById(`user-health`);
+      /* add the new value after being attacked */
+      user_health[`innerHTML`] = `${user_current_health}hp`;
+      /* uptading the cookie with the new user current health */
+      Cookies.set(`user_current_health`, `${user_current_health}`);
+    }
+  } else {
+    alert(`The chosen option is zero. Chose other attack.`);
+    fourth_attack_stock = 0;
+    fourth_stock[`innerHTML`] = `${fourth_attack_stock}/4`;
+    Cookies.set(`fourth_attack_stock`, fourth_attack_stock);
+  }
 }
 
 /* gets the id of the fourth recovery button */
