@@ -218,29 +218,15 @@ let button_attack_third = document.getElementById(`attack-three`);
 /* after clicked, call the function damageThird */
 button_attack_third.addEventListener(`click`, damageThird);
 
+/* this function its for the fourth button that can recovery the user hp pokemon */
 function recovery(details) {
+    /* the user current health get increased in a random number that can go from zero to 40 */
     user_current_health =
     user_current_health + 50;
 
-    /* check if the computer current health is less or equal to zero and if yes, set its value to zero */
-  if (computer_current_health <= 0) {
-    computer_current_health = 0;
-  }
-
-  /* gets the computer health tag  */
-  let computer_health = document.getElementById(`computer-health`);
-  /* update the new value after being attacked */
-  computer_health[`innerHTML`] = `${computer_current_health}hp`;
-  /* set the cookie to this new value, so when the pages refreshs, the hp its still the same */
-  Cookies.set(`computer_current_health`, `${computer_current_health}`);
-
   /* check if the computer health after being attacked its equal to zero */
-  if (computer_current_health === 0) {
-    /* its print on the screen that you are the winner */
-    let computer_health = document.getElementById(`div-buttons-attack`);
-    computer_health[`outerHTML`] = `<h3>You win!</h3>`;
-  } else if (user_current_health > 0) {
-    /* check if the user current health is higher tham zero */
+  if (user_current_health > 0) {
+
     /* the user pokemon is attacked with a random number from zero to 50 */
     user_current_health = user_current_health - Math.floor(Math.random() * (80 - 30) + 30);
 
@@ -259,9 +245,10 @@ function recovery(details) {
     user_health[`innerHTML`] = `${user_current_health}hp`;
     /* uptading the cookie with the new user current health */
     Cookies.set(`user_current_health`, `${user_current_health}`);
-  } else {
-  }
+  } 
 }
 
+/* gets the id of the fourth recovery button */
 let button_recovery = document.getElementById(`attack-recovery`);
+/* after clicked, call the function recovery */
 button_recovery.addEventListener(`click`, recovery);
