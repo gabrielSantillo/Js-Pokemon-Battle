@@ -26,14 +26,14 @@ let user_current_health = parseInt(Cookies.get(`user_current_health`));
 /* receiveing the computer current health as string and turning into number*/
 let computer_current_health = parseInt(Cookies.get(`computer_current_health`));
 
-let first_attack_stock = 3;
-Cookies.set(`first_attack_stock`, first_attack_stock);
-let second_attack_stock = 4;
-Cookies.set(`second_attack_stock`, second_attack_stock);
-let third_attack_stock = 5;
-Cookies.set(`third_attack_stock`, third_attack_stock);
-let fourth_attack_stock = 4;
-Cookies.set(`fourth_attack_stock`, fourth_attack_stock);
+/* getting the value of the cookie and saving in the variable as a integer */
+let first_attack_stock = parseInt(Cookies.get(`first_attack_stock`));
+/* getting the value of the cookie and saving in the variable as a integer */
+let second_attack_stock = parseInt(Cookies.get(`second_attack_stock`));
+/* getting the value of the cookie and saving in the variable as a integer */
+let third_attack_stock = parseInt(Cookies.get(`third_attack_stock`));
+/* getting the value of the cookie and saving in the variable as a integer */
+let fourth_attack_stock = parseInt(Cookies.get(`fourth_attack_stock`));
 
 /* making sure that the selection is not undefined to set to an object */
 if (selection_json !== undefined) {
@@ -97,7 +97,7 @@ function damageFirst(details) {
     /* it change the content of the number of attacks */
     first_stock[`innerHTML`] = `${first_attack_stock}/3`;
     /* set the cookie to the new stock of attacks */
-    Cookies.set(`first_attack_stock`, first_attack_stock);
+    Cookies.set(`first_attack_stock`, `${first_attack_stock}`);
 
     /* check if the computer current health is less or equal to zero and if yes, set its value to zero */
     if (computer_current_health <= 0) {
@@ -169,7 +169,7 @@ function damageSecond(details) {
     /* it change the content of the number of attacks */
     second_stock[`innerHTML`] = `${second_attack_stock}/4`;
     /* set the cookie to the new stock of attacks */
-    Cookies.set(`second_attack_stock`, second_attack_stock);
+    Cookies.set(`second_attack_stock`, `${second_attack_stock}`);
 
     /* check if the computer current health is less or equal to zero and if yes, set its value to zero */
     if (computer_current_health <= 0) {
@@ -240,7 +240,7 @@ function damageThird(details) {
     /* it change the content of the number of attacks */
     third_stock[`innerHTML`] = `${third_attack_stock}/5`;
     /* set the cookie to the new stock of attacks */
-    Cookies.set(`third_attack_stock`, third_attack_stock);
+    Cookies.set(`third_attack_stock`, `${third_attack_stock}`);
 
     /* check if the computer current health is less or equal to zero and if yes, set its value to zero */
     if (computer_current_health <= 0) {
@@ -308,7 +308,7 @@ function recovery(details) {
     /* it change the content of the number of attacks */
     fourth_stock[`innerHTML`] = `${fourth_attack_stock}/4`;
     /* set the cookie to the new stock of attacks */
-    Cookies.set(`fourth_attack_stock`, fourth_attack_stock);
+    Cookies.set(`fourth_attack_stock`, `${fourth_attack_stock}`);
 
     /* check if the computer health after being attacked its equal to zero */
     if (user_current_health > 0) {

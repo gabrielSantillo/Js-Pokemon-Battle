@@ -15,6 +15,23 @@ for (let counter = 0; counter < go_to_battle.length; counter++) {
   go_to_battle[counter].addEventListener(`click`, goToBattle);
 }
 
+/* variable that stocks the number of attacks the user can make */
+let first_attack_stock = 3;
+/* setting the cookie with the value if the first_attack_stock */
+Cookies.set(`first_attack_stock`, first_attack_stock);
+/* variable that stocks the number of attacks the user can make */
+let second_attack_stock = 4;
+/* setting the cookie with the value if the second_attack_stock */
+Cookies.set(`second_attack_stock`, second_attack_stock);
+/* variable that stocks the number of attacks the user can make */
+let third_attack_stock = 5;
+/* setting the cookie with the value if the third_attack_stock */
+Cookies.set(`third_attack_stock`, third_attack_stock);
+/* variable that stocks the number of attacks the user can make */
+let fourth_attack_stock = 4;
+/* setting the cookie with the value if the fourth_attack_stock */
+Cookies.set(`fourth_attack_stock`, fourth_attack_stock);
+
 /* this is the variable that creates the object Charizard */
 let charizard = {
   name: `Charizard`,
