@@ -84,6 +84,8 @@ if (selection_json !== undefined) {
   );
 }
 
+let div_button_pokeball = document.getElementById(`div-pokeball`);
+
 /* this function its for the first button that can damage the computer pokemon */
 function damageFirst(details) {
   /* getting the id of the p tag that contains the number of attacks that the user can attack */
@@ -93,7 +95,7 @@ function damageFirst(details) {
   if (first_attack_stock > 0) {
     /* the computer current health get decreased in a random number that can go from zero to 70 */
     computer_current_health =
-      computer_current_health - Math.floor(Math.random() * 70);
+      computer_current_health - 150;
     /* the stock of attack gets decreased by one*/
     first_attack_stock = first_attack_stock - 1;
     /* it verify if the stock of attack is zero to change the color of the tag to red. Which indicates that this attack is out of stock */
@@ -122,6 +124,8 @@ function damageFirst(details) {
       /* its print on the screen that you are the winner */
       let computer_health = document.getElementById(`div-buttons-attack`);
       computer_health[`outerHTML`] = `<h3>You win!</h3>`;
+      div_button_pokeball.remove();
+
     } else if (user_current_health > 0) {
       /* check if the user current health is higher tham zero */
       /* the user pokemon is attacked with a random number from zero to 50 */
@@ -194,6 +198,7 @@ function damageSecond(details) {
       /* its print on the screen that you are the winner */
       let computer_health = document.getElementById(`div-buttons-attack`);
       computer_health[`outerHTML`] = `<h3>You win!</h3>`;
+      div_button_pokeball.remove();
     } else if (user_current_health > 0) {
       /* check if the user current health is higher tham zero */
       /* the user pokemon is attacked with a random number from zero to 50 */
@@ -265,6 +270,7 @@ function damageThird(details) {
       /* its print on the screen that you are the winner */
       let computer_health = document.getElementById(`div-buttons-attack`);
       computer_health[`outerHTML`] = `<h3>You win!</h3>`;
+      div_button_pokeball.remove();
     } else if (user_current_health > 0) {
       /* check if the user current health is higher tham zero */
       /* the user pokemon is attacked with a random number from zero to 50 */
