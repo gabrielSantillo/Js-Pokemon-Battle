@@ -351,52 +351,116 @@ let button_recovery = document.getElementById(`attack-recovery`);
 /* after clicked, call the function recovery */
 button_recovery.addEventListener(`click`, recovery);
 
-
 /* ADD COMMENTS DESCRIBING THE CODE */
 function throwPokeball(details) {
   /* this math function returns a random number from 1 to 10 Math.floor(Math.random() * (11 - 1) + 1);*/
-  let ramdomNumber = 0;
+  let ramdomNumberHarder = Math.floor(Math.random() * (11 - 1) + 1);
+  let ramdomNumberRegular = Math.floor(Math.random() * (6 - 1) + 1);
+  let ramdomNumberEasier = Math.floor(Math.random() * (3 - 1) + 1);
 
   if (pokeball_stock > 0) {
-    pokeball_stock = pokeball_stock - 5;
+    pokeball_stock = pokeball_stock - 1;
 
-    if(pokeball_stock === 0) {
-        let pokeball_p_tag = document.getElementById(`pokeball-p-tag`);
-        pokeball_p_tag[`style`][`color`] = `red`;
+    if (pokeball_stock === 0) {
+      let pokeball_p_tag = document.getElementById(`pokeball-p-tag`);
+      pokeball_p_tag[`style`][`color`] = `red`;
     }
     Cookies.set(`pokeball_stock`, pokeball_stock);
     let pokeball_p_tag = document.getElementById(`pokeball-p-tag`);
     pokeball_p_tag[`innerHTML`] = `${pokeball_stock}/10`;
 
-    if (ramdomNumber === 10) {
-      let computer_pokemom = document.getElementById(`computer-pokemon`);
-      computer_pokemom.setAttribute(
-        `src`,
-        `https://www.freeiconspng.com/thumbs/pokeball-png/pokemon-ball-png-1.png`
-      );
-      computer_pokemom[`style`][`width`] = `100px`;
+    if (computer_current_health <= 150 && computer_current_health > 120) {
+      if (ramdomNumberHarder === 10) {
+        let computer_pokemom = document.getElementById(`computer-pokemon`);
+        computer_pokemom.setAttribute(
+          `src`,
+          `https://www.freeiconspng.com/thumbs/pokeball-png/pokemon-ball-png-1.png`
+        );
+        computer_pokemom[`style`][`width`] = `100px`;
 
-      let computer_pokemon_name = document.getElementById(
-        `computer-pokemon-name`
-      );
-      computer_pokemon_name[
-        `innerHTML`
-      ] = `Congratulations! You have captured ${computer_selection[`name`]}`;
+        let computer_pokemon_name = document.getElementById(
+          `computer-pokemon-name`
+        );
+        computer_pokemon_name[
+          `innerHTML`
+        ] = `Congratulations! You have captured ${computer_selection[`name`]}`;
 
-      let button_back = document.getElementById(`computer-health`);
-      button_back[`outerHTML`] = `<button id="back-home-button">Back Home</button>`;
-      let back_home_button = document.getElementById(`back-home-button`);
-      back_home_button.addEventListener(`click`, goBack);
+        let button_back = document.getElementById(`computer-health`);
+        button_back[
+          `outerHTML`
+        ] = `<button id="back-home-button">Back Home</button>`;
+        let back_home_button = document.getElementById(`back-home-button`);
+        back_home_button.addEventListener(`click`, goBack);
 
-      let button_attacks = document.getElementById(`div-buttons-attack`);
-      button_attacks.remove();
+        let button_attacks = document.getElementById(`div-buttons-attack`);
+        button_attacks.remove();
 
-      let div_button_pokeball = document.getElementById(`div-pokeball`);
-      div_button_pokeball.remove();
+        let div_button_pokeball = document.getElementById(`div-pokeball`);
+        div_button_pokeball.remove();
+      }
+    } else if (computer_current_health <= 120 && computer_current_health > 50) {
+      if (ramdomNumberRegular === 5) {
+        let computer_pokemom = document.getElementById(`computer-pokemon`);
+        computer_pokemom.setAttribute(
+          `src`,
+          `https://www.freeiconspng.com/thumbs/pokeball-png/pokemon-ball-png-1.png`
+        );
+        computer_pokemom[`style`][`width`] = `100px`;
+
+        let computer_pokemon_name = document.getElementById(
+          `computer-pokemon-name`
+        );
+        computer_pokemon_name[
+          `innerHTML`
+        ] = `Congratulations! You have captured ${computer_selection[`name`]}`;
+
+        let button_back = document.getElementById(`computer-health`);
+        button_back[
+          `outerHTML`
+        ] = `<button id="back-home-button">Back Home</button>`;
+        let back_home_button = document.getElementById(`back-home-button`);
+        back_home_button.addEventListener(`click`, goBack);
+
+        let button_attacks = document.getElementById(`div-buttons-attack`);
+        button_attacks.remove();
+
+        let div_button_pokeball = document.getElementById(`div-pokeball`);
+        div_button_pokeball.remove();
+      }
+    } else {
+      if (ramdomNumberEasier === 2) {
+        let computer_pokemom = document.getElementById(`computer-pokemon`);
+        computer_pokemom.setAttribute(
+          `src`,
+          `https://www.freeiconspng.com/thumbs/pokeball-png/pokemon-ball-png-1.png`
+        );
+        computer_pokemom[`style`][`width`] = `100px`;
+
+        let computer_pokemon_name = document.getElementById(
+          `computer-pokemon-name`
+        );
+        computer_pokemon_name[
+          `innerHTML`
+        ] = `Congratulations! You have captured ${computer_selection[`name`]}`;
+
+        let button_back = document.getElementById(`computer-health`);
+        button_back[
+          `outerHTML`
+        ] = `<button id="back-home-button">Back Home</button>`;
+        let back_home_button = document.getElementById(`back-home-button`);
+        back_home_button.addEventListener(`click`, goBack);
+
+        let button_attacks = document.getElementById(`div-buttons-attack`);
+        button_attacks.remove();
+
+        let div_button_pokeball = document.getElementById(`div-pokeball`);
+        div_button_pokeball.remove();
+      }
     }
-    /* ADD ELSE IF FOR WHEN THE POKEMON HAS LESS HP. THIS MEANS, CLOSE TO ZERO HP, EASIER TO CATCH*/
+
+    /* add the computer attack to this this logic when the computer pokemon was not captured */
   } else {
-    alert("You don't pokeballs to throw.")
+    alert("You don't pokeballs to throw.");
   }
 }
 
