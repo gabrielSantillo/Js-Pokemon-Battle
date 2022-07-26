@@ -351,27 +351,53 @@ let button_recovery = document.getElementById(`attack-recovery`);
 /* after clicked, call the function recovery */
 button_recovery.addEventListener(`click`, recovery);
 
+
+/* ADD COMMENTS DESCRIBING THE CODE */
 function throwPokeball(details) {
-    /* this math function returns a random number from 1 to 10 Math.floor(Math.random() * (11 - 1) + 1);*/
-    let ramdomNumber = 10;
+  /* this math function returns a random number from 1 to 10 Math.floor(Math.random() * (11 - 1) + 1);*/
+  let ramdomNumber = 0;
 
-    if(pokeball_stock > 0) {
-        pokeball_stock = pokeball_stock - 1;
-        Cookies.set(`pokeball_stock`, pokeball_stock);
-        let pokeball_p_tag = document.getElementById(`click`, `pokeball-p-tag`);
-        pokeball_p_tag[`innerHTML`] = `${pokeball_stock}/10`;
+  if (pokeball_stock > 0) {
+    pokeball_stock = pokeball_stock - 5;
 
-        if (ramdomNumber === 10) {
-        let computer_pokemom = document.getElementById(`computer-pokemon`);
-        computer_pokemom.setAttribute(`src`, `https://www.freeiconspng.com/thumbs/pokeball-png/pokemon-ball-png-1.png`);
-        computer_pokemom[`style`][`width`] = `100px`
-
-        let computer_pokemon_name = document.getElementById(`computer-pokemon-name`);
-        computer_pokemon_name[`innerHTML`] = `Congratulations! You have captured ${computer_selection[`name`]}`;
+    if(pokeball_stock === 0) {
+        let pokeball_p_tag = document.getElementById(`pokeball-p-tag`);
+        pokeball_p_tag[`style`][`color`] = `red`;
     }
-    }
+    Cookies.set(`pokeball_stock`, pokeball_stock);
+    let pokeball_p_tag = document.getElementById(`pokeball-p-tag`);
+    pokeball_p_tag[`innerHTML`] = `${pokeball_stock}/10`;
 
-    
+    if (ramdomNumber === 10) {
+      let computer_pokemom = document.getElementById(`computer-pokemon`);
+      computer_pokemom.setAttribute(
+        `src`,
+        `https://www.freeiconspng.com/thumbs/pokeball-png/pokemon-ball-png-1.png`
+      );
+      computer_pokemom[`style`][`width`] = `100px`;
+
+      let computer_pokemon_name = document.getElementById(
+        `computer-pokemon-name`
+      );
+      computer_pokemon_name[
+        `innerHTML`
+      ] = `Congratulations! You have captured ${computer_selection[`name`]}`;
+
+      let button_back = document.getElementById(`computer-health`);
+      button_back[`outerHTML`] = `<button id="back-home-button">Back Home</button>`;
+      let back_home_button = document.getElementById(`back-home-button`);
+      back_home_button.addEventListener(`click`, goBack);
+
+      let button_attacks = document.getElementById(`div-buttons-attack`);
+      button_attacks.remove();
+
+      let div_button_pokeball = document.getElementById(`div-pokeball`);
+      div_button_pokeball.remove();
+    }
+    /* ADD ELSE IF FOR WHEN THE POKEMON HAS LESS HP. THIS MEANS, CLOSE TO ZERO HP, EASIER TO CATCH*/
+  } else {
+    alert("You don't pokeballs to throw.")
+  }
 }
 
 let pokeball_button = document.getElementById(`pokeball-button`);
