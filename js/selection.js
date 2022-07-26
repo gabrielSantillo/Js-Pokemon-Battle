@@ -35,6 +35,8 @@ let third_attack_stock = parseInt(Cookies.get(`third_attack_stock`));
 /* getting the value of the cookie and saving in the variable as a integer */
 let fourth_attack_stock = parseInt(Cookies.get(`fourth_attack_stock`));
 
+let pokeball_stock = parseInt(Cookies.get(`pokeball_stock`));
+
 /* making sure that the selection is not undefined to set to an object */
 if (selection_json !== undefined) {
   /* making the selection JSON back to an object again */
@@ -47,8 +49,8 @@ if (selection_json !== undefined) {
     `afterbegin`,
     /* adding to the page before the section the computer pokemon and then, the user pokemon */
     `<div>
-        <img src="${computer_selection[`img_url`]}">
-        <h2>${computer_selection[`name`]}</h2>
+        <img id="computer-pokemon" src="${computer_selection[`img_url`]}">
+        <h2 id="computer-pokemon-name">${computer_selection[`name`]}</h2>
         <h3 id="computer-health">${computer_current_health}hp</h3>
     </div>
     
@@ -74,6 +76,10 @@ if (selection_json !== undefined) {
         <p id="fourth-stock">${fourth_attack_stock}/4</p>
         </div>
         <h3 id="user-health">${user_current_health}hp</h3>
+        <div id="div-pokeball">
+        <button id="pokeball-button">Pokeball</button>
+        <p id="pokeball-p-tag">${pokeball_stock}/10</p>
+        </div>
     </div>`
   );
 }
@@ -344,3 +350,29 @@ function recovery(details) {
 let button_recovery = document.getElementById(`attack-recovery`);
 /* after clicked, call the function recovery */
 button_recovery.addEventListener(`click`, recovery);
+
+function throwPokeball(details) {
+    /* this math function returns a random number from 1 to 10 Math.floor(Math.random() * (11 - 1) + 1);*/
+    let ramdomNumber = 10;
+
+    if(pokeball_stock > 0) {
+        pokeball_stock = pokeball_stock - 1;
+        Cookies.set(`pokeball_stock`, pokeball_stock);
+        let pokeball_p_tag = document.getElementById(`click`, `pokeball-p-tag`);
+        pokeball_p_tag[`innerHTML`] = `${pokeball_stock}/10`;
+
+        if (ramdomNumber === 10) {
+        let computer_pokemom = document.getElementById(`computer-pokemon`);
+        computer_pokemom.setAttribute(`src`, `https://www.freeiconspng.com/thumbs/pokeball-png/pokemon-ball-png-1.png`);
+        computer_pokemom[`style`][`width`] = `100px`
+
+        let computer_pokemon_name = document.getElementById(`computer-pokemon-name`);
+        computer_pokemon_name[`innerHTML`] = `Congratulations! You have captured ${computer_selection[`name`]}`;
+    }
+    }
+
+    
+}
+
+let pokeball_button = document.getElementById(`pokeball-button`);
+pokeball_button.addEventListener(`click`, throwPokeball);

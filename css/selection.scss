@@ -31,12 +31,27 @@ main{
 #section-battle {
   display: grid;
   place-items: center;
+  margin-bottom: 20px;
 
   >div {
     display: grid;
     place-items: center;
     row-gap: 10px;
     
+    >#div-pokeball {
+      >button {
+        background-color: rgb(197, 48, 48);
+        width: 130%;
+      }
+
+      >button:hover {
+        background-color: rgb(233, 43, 43);
+      }
+
+      >button:active {
+        transform: scale(.9);
+      }
+    }
 
     >div {
       display: grid;

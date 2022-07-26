@@ -29,11 +29,22 @@ main > #arrow-left {
 #section-battle {
   display: grid;
   place-items: center;
+  margin-bottom: 20px;
 }
 #section-battle > div {
   display: grid;
   place-items: center;
   row-gap: 10px;
+}
+#section-battle > div > #div-pokeball > button {
+  background-color: rgb(197, 48, 48);
+  width: 130%;
+}
+#section-battle > div > #div-pokeball > button:hover {
+  background-color: rgb(233, 43, 43);
+}
+#section-battle > div > #div-pokeball > button:active {
+  transform: scale(0.9);
 }
 #section-battle > div > div {
   display: grid;

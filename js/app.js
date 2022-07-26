@@ -32,6 +32,9 @@ let fourth_attack_stock = 4;
 /* setting the cookie with the value if the fourth_attack_stock */
 Cookies.set(`fourth_attack_stock`, fourth_attack_stock);
 
+let pokeball_stock = 10;
+Cookies.set(`pokeball_stock`, pokeball_stock);
+
 /* this is the variable that creates the object Charizard */
 let charizard = {
   name: `Charizard`,
